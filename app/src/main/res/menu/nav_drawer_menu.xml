@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/homeFragment"
+        android:title="Home" />
+    <item
+        android:id="@+id/techFragment"
+        android:title="Tech" />
+    <item
+        android:id="@+id/cultureFragment"
+        android:title="Culture" />
+    <item
+        android:id="@+id/businessFragment"
+        android:title="Business" />
+    <item
+        android:id="@+id/sportFragment"
+        android:title="Sport" />
+    <item
+        android:id="@+id/savedFragment"
+        android:title="Favorite" />
+
+</menu>
