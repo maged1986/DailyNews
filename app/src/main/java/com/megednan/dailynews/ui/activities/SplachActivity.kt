@@ -9,28 +9,26 @@ import com.megednan.dailynews.R
 import com.megednan.dailynews.databinding.ActivityMainBinding
 import com.megednan.dailynews.databinding.ActivitySplachBinding
 import dagger.hilt.android.AndroidEntryPoint
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.delay
+import kotlinx.coroutines.launch
 
-@AndroidEntryPoint
 class SplachActivity : AppCompatActivity() {
     lateinit var binding: ActivitySplachBinding
+    val activityScope = CoroutineScope(Dispatchers.Main)
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        binding= ActivitySplachBinding.inflate(layoutInflater)
-        val view=binding.root
-        setContentView(view)
-        // This is used to hide the status bar and make
-        // the splash screen as a full screen activity.
-        window.setFlags(
-                WindowManager.LayoutParams.FLAG_FULLSCREEN,
-                WindowManager.LayoutParams.FLAG_FULLSCREEN
-        )
+        binding = ActivitySplachBinding.inflate(layoutInflater)
+        val view = binding.root
+        var intent = Intent(this, MainActivity::class.java)
 
-        // we used the postDelayed(Runnable, time) method
-        // to send a message with a delayed time.
-        Handler().postDelayed({
-            val intent = Intent(this, MainActivity::class.java)
+        setContentView(view)
+        activityScope.launch {
+            delay(3000)
             startActivity(intent)
-            finish()
-        }, 3000) // 3000 is the delayed time in milliseconds.
+        }
     }
+
 }
